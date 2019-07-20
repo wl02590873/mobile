@@ -6,6 +6,8 @@ public class TutorialPlayer : MonoBehaviour
 {
     [Header("行星")]
     public GameObject Planet;
+    public GameObject PlayerPlaceholder;
+
     public float speed = 10;
     [Header("跳躍高度")]
     public float JumpHeight = 10;
@@ -77,5 +79,22 @@ public class TutorialPlayer : MonoBehaviour
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, GroundNomal) * transform.rotation;
         transform.rotation = toRotation;
         #endregion
+    }
+
+    //改變星球
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform !=Planet.transform)
+        {
+            Planet = collision.transform.gameObject;
+            Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
+            Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravDirection) * transform.rotation;
+            transform.rotation = toRotation;
+
+            rb.velocity = Vector3.zero;
+            rb.AddForce(gravDirection * Gravity);
+
+            PlayerPlaceholder.GetComponent<TutorialPlayerPlaceholder>().NewPlanet(Planet);
+        }
     }
 }
