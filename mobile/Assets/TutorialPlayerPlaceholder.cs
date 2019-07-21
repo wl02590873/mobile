@@ -10,6 +10,7 @@ public class TutorialPlayerPlaceholder : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.1f);
+
         Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
 
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravDirection) * transform.rotation;

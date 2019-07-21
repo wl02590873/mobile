@@ -6,7 +6,8 @@ public class TutoorialCamera : MonoBehaviour
 {
     public GameObject target;
     public float xSpeed = 3.5f;
-    float sensitivity = 17f;
+    //靈敏度
+    float sensitivity = 1.7f;
 
 
     float minFov = 35;
