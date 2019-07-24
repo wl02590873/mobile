@@ -5,25 +5,11 @@ using UnityEngine;
 public class TutoorialCamera : MonoBehaviour
 {
     public GameObject target;
-    public float xSpeed = 3.5f;
-    //靈敏度
-    float sensitivity = 1.7f;
+    public float xSpeed = 10.0f;
 
-
-    float minFov = 35;
-    float maxFov = 100;
     void Update()
     {
-        if (Input.GetMouseButton(1))
-        {
-            transform.RotateAround(target.transform.position, transform.up, Input.GetAxis("Mouse X") * xSpeed);
-            transform.RotateAround(target.transform.position, transform.right, Input.GetAxis("Mouse Y") * xSpeed);
-
-            //ZOOM
-            float fov = Camera.main.fieldOfView;
-            fov += Input.GetAxis("Mouse ScrollWheel") * -sensitivity;
-            fov = Mathf.Clamp(fov, minFov, maxFov);
-            Camera.main.fieldOfView = fov;
-        }
+        transform.RotateAround(target.transform.position, transform.up, Input.GetAxis("Mouse X") * xSpeed*Time.deltaTime);
+        transform.RotateAround(target.transform.position, transform.right, Input.GetAxis("Mouse Y") * -xSpeed*Time.deltaTime);
     }
 }

@@ -12,11 +12,14 @@ public class TutorialPlayer : MonoBehaviour
     [Header("跳躍高度")]
     public float JumpHeight = 10;
 
-    float Gravity = 100;//重力
+    float Gravity = 200;//重力
 
     bool OnGround = false;//地面
 
     float DistanceToGround;//地面距離
+    [Header("攝影機速度")]
+    public float MainCameraSpeed=20.0f;
+
     Vector3 GroundNomal;
 
     private Rigidbody rb;
@@ -36,14 +39,10 @@ public class TutorialPlayer : MonoBehaviour
         #endregion
 
         #region 視角
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.Rotate(0, 150 * Time.deltaTime, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            transform.Rotate(0, -150 * Time.deltaTime, 0);
-        }
+        float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
+        float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
+        transform.Rotate(v, h, 0);
+
         #endregion
 
         #region 跳躍
@@ -54,12 +53,13 @@ public class TutorialPlayer : MonoBehaviour
         #endregion
         #region 地面控制
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 20))
         {
             DistanceToGround = hit.distance;
             GroundNomal = hit.normal;
             if (DistanceToGround <= 2.0f)
             {
+                Debug.DrawLine(transform.position, hit.point, Color.red);
                 OnGround = true;
             }
             else
