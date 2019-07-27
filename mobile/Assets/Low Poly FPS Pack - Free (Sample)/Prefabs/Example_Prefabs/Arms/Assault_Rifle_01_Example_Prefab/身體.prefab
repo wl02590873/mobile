@@ -697,6 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528342733223695930}
+  - component: {fileID: 323580623898257308}
   m_Layer: 0
   m_Name: Assault_Rifle_01_Arms
   m_TagString: Player
@@ -721,6 +722,23 @@ Transform:
   m_Father: {fileID: 1119645974820714376}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323580623898257308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529481923896554716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453ee1ccf096385449bade455d89cbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Planet: {fileID: 1529481923896554716}
+  PlayerPlaceholder: {fileID: 0}
+  speed: 10
+  JumpHeight: 10
+  MainCameraSpeed: 20
 --- !u!1 &1529510050932337252
 GameObject:
   m_ObjectHideFlags: 0
