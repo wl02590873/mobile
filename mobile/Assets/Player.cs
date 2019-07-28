@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("行星")]
-    public GameObject Planet;
-    public GameObject PlayerPlaceholder;
+    private void Awake()
+    {
+        LockCursor();
+    }
+    //讓滑鼠在螢幕內不會跑到視窗外
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     public float speed = 10;
     [Header("跳躍高度")]
     public float JumpHeight = 10;
+    [Header("滑鼠靈敏度")]
+    public float mouseSpeed;
+    //X軸最大90度
+    private float xMAX;
 
     float Gravity = 200;//重力
 
     bool OnGround = false;//地面
 
     float DistanceToGround;//地面距離
-    [Header("攝影機速度")]
-    public float MainCameraSpeed = 20.0f;
 
     Vector3 GroundNomal;
 
@@ -29,28 +37,10 @@ public class Player : MonoBehaviour
         rb.freezeRotation = true;//鎖定Rigidbody旋轉
     }
 
-
     void Update()
     {
-        #region 移動
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        transform.Translate(x, 0, z);
-        #endregion
-
-        #region 視角
-        float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
-        float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
-        transform.Rotate(v, h, 0);
-
-        #endregion
-
-        #region 跳躍
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(transform.up * 4000 * JumpHeight * Time.deltaTime);
-        }
-        #endregion
+        playerCamera();
+        playerMobile();
         #region 地面控制
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(transform.position, -transform.up, out hit, 20))
@@ -68,18 +58,44 @@ public class Player : MonoBehaviour
             }
         }
         #endregion
-
-        #region 重力和旋轉
-        Vector3 GravDirection = (transform.position - Planet.transform.position).normalized;//重力方向
-        if (OnGround == false)
-        {
-            rb.AddForce(GravDirection * -Gravity);//添加重力方向
-        }
-
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, GroundNomal) * transform.rotation;
-        transform.rotation = toRotation;
+    }
+    private void playerMobile()
+    {
+        #region 移動
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        transform.Translate(x, 0, z);
         #endregion
+
+        #region 跳躍
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(transform.up * 4000 * JumpHeight * Time.deltaTime);
+        }
+        #endregion
+
     }
 
+    private void playerCamera()
+    {
+        #region 視角
+        float mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSpeed * Time.deltaTime;
+        mouseX += xMAX;
+        if (xMAX>=90)
+        {
+            xMAX = 90.0f;
+            mouseY = 0.0f;
+        }
+        else if (xMAX < -90)
+        {
+            xMAX = -90.0f;
+            mouseY = 0.0f;
+        }
+
+        transform.Rotate(-transform.right*mouseY);
+
+        #endregion
+    }
 
 }

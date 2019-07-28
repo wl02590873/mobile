@@ -209,7 +209,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426336961
 GameObject:
@@ -332,105 +332,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1836527533
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7545688228503449, guid: 7066737889c66484085be935a922fcc8, type: 3}
-      propertyPath: m_Name
-      value: "\u8EAB\u9AD4"
-      objectReference: {fileID: 0}
-    - target: {fileID: 7545688228503449, guid: 7066737889c66484085be935a922fcc8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 19.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.224
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119645974820714376, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869827762092505875, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: Planet
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869827762092505875, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: PlayerPlaceholder
-      value: 
-      objectReference: {fileID: 1434102240}
-    - target: {fileID: 8896149952958760605, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 4390576658440092697, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: mouseSensitivity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 522974487401056083, guid: 7066737889c66484085be935a922fcc8,
-        type: 3}
-      propertyPath: Planet
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 522974487401056083, guid: 7066737889c66484085be935a922fcc8, type: 3}
-    - {fileID: 6869827762092505875, guid: 7066737889c66484085be935a922fcc8, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 7066737889c66484085be935a922fcc8, type: 3}
 --- !u!1 &1946533058
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,9 +343,8 @@ GameObject:
   - component: {fileID: 1946533063}
   - component: {fileID: 1946533062}
   - component: {fileID: 1946533061}
-  - component: {fileID: 1946533060}
   - component: {fileID: 1946533059}
-  - component: {fileID: 1946533065}
+  - component: {fileID: 1946533060}
   - component: {fileID: 1946533064}
   m_Layer: 0
   m_Name: Capsule
@@ -452,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1946533059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,11 +362,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1946533058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7904f4d52f50824ea06b4164befe606, type: 3}
+  m_Script: {fileID: 11500000, guid: 55470056c21377f439448c6cda220005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1946533058}
-  Planet: {fileID: 0}
+  speed: 10
+  JumpHeight: 10
+  mouseSpeed: 20
 --- !u!136 &1946533060
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -539,7 +440,7 @@ Transform:
   m_Children:
   - {fileID: 1990833269}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1946533064
 Rigidbody:
@@ -557,23 +458,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &1946533065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946533058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 453ee1ccf096385449bade455d89cbb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Planet: {fileID: 0}
-  PlayerPlaceholder: {fileID: 1946533058}
-  speed: 10
-  JumpHeight: 10
-  MainCameraSpeed: 20
 --- !u!1 &1990833268
 GameObject:
   m_ObjectHideFlags: 0
