@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;//鎖定Rigidbody旋轉
     }
 
 
@@ -80,20 +81,5 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    //改變星球
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.transform != Planet.transform)
-        {
-            Planet = collision.transform.gameObject;
-            Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
-            Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravDirection) * transform.rotation;
-            transform.rotation = toRotation;
 
-            rb.velocity = Vector3.zero;
-            rb.AddForce(gravDirection * Gravity);
-
-            PlayerPlaceholder.GetComponent<TutorialPlayerPlaceholder>().NewPlanet(Planet);
-        }
-    }
 }

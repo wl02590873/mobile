@@ -111,7 +111,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!82 &7942388329432602639
 AudioSource:
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Planet: {fileID: 7545688228503449}
-  PlayerPlaceholder: {fileID: 7545688228503449}
+  PlayerPlaceholder: {fileID: 1529481923896554716}
   speed: 10
   JumpHeight: 10
   MainCameraSpeed: 20
@@ -697,7 +697,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528342733223695930}
-  - component: {fileID: 323580623898257308}
   m_Layer: 0
   m_Name: Assault_Rifle_01_Arms
   m_TagString: Player
@@ -722,23 +721,6 @@ Transform:
   m_Father: {fileID: 1119645974820714376}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &323580623898257308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529481923896554716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 453ee1ccf096385449bade455d89cbb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Planet: {fileID: 1529481923896554716}
-  PlayerPlaceholder: {fileID: 0}
-  speed: 10
-  JumpHeight: 10
-  MainCameraSpeed: 20
 --- !u!1 &1529510050932337252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1194,7 @@ GameObject:
   - component: {fileID: 1528207707925042810}
   - component: {fileID: 1548658534298963982}
   - component: {fileID: 1447922222993825964}
+  - component: {fileID: 522974487401056083}
   - component: {fileID: 1686821976083594244}
   m_Layer: 8
   m_Name: Gun Camera
@@ -1285,6 +1268,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530321213682698574}
   m_Enabled: 1
+--- !u!114 &522974487401056083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530321213682698574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55470056c21377f439448c6cda220005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Planet: {fileID: 0}
+  PlayerPlaceholder: {fileID: 1530321213682698574}
+  speed: 10
+  JumpHeight: 10
+  MainCameraSpeed: 20
 --- !u!167 &1686821976083594244
 AudioReverbZone:
   m_ObjectHideFlags: 0

@@ -75,9 +75,9 @@ public class TutorialPlayer : MonoBehaviour
         {
             rb.AddForce(GravDirection * -Gravity);//添加重力方向
         }
-
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, GroundNomal) * transform.rotation;
         transform.rotation = toRotation;
+        
         #endregion
     }
 
