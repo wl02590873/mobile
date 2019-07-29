@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         LockCursor();
+        xAxisClamp = 0.0f;
     }
     //讓滑鼠在螢幕內不會跑到視窗外
     private void LockCursor()
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
     [Header("滑鼠靈敏度")]
     public float mouseSpeed;
     //X軸最大90度
-    private float xMAX;
+    private float xAxisClamp;
 
     float Gravity = 200;//重力
 
@@ -81,21 +82,29 @@ public class Player : MonoBehaviour
         #region 視角
         float mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSpeed * Time.deltaTime;
-        mouseX += xMAX;
-        if (xMAX>=90)
+        mouseX += xAxisClamp;
+        if (xAxisClamp >= 90)
         {
-            xMAX = 90.0f;
+            xAxisClamp = 90.0f;
             mouseY = 0.0f;
+            ClampXAxisRotationToValue(270.0f);
         }
-        else if (xMAX < -90)
+        else if (xAxisClamp < -90)
         {
-            xMAX = -90.0f;
+            xAxisClamp = -90.0f;
             mouseY = 0.0f;
+            ClampXAxisRotationToValue(90.0f);
         }
 
         transform.Rotate(-transform.right*mouseY);
 
         #endregion
+    }
+    private void ClampXAxisRotationToValue(float value)
+    {
+        Vector3 eulerRotation = transform.eulerAngles;
+        eulerRotation.x = value;
+        transform.eulerAngles = eulerRotation;
     }
 
 }
