@@ -27,6 +27,7 @@ public class TutorialPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;//鎖定Rigidbody旋轉
+        LockCursor();//讓滑鼠在螢幕內不會跑到視窗外
     }
 
 
@@ -40,8 +41,8 @@ public class TutorialPlayer : MonoBehaviour
 
         #region 視角
         float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
-        float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
-        transform.Rotate(0, h, 0);
+        //float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
+        transform.Rotate(h, 0, 0);
 
         #endregion
 
@@ -96,5 +97,10 @@ public class TutorialPlayer : MonoBehaviour
 
             PlayerPlaceholder.GetComponent<TutorialPlayerPlaceholder>().NewPlanet(Planet);
         }
+    }
+    //讓滑鼠在螢幕內不會跑到視窗外
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
