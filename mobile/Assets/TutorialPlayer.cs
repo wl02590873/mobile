@@ -41,7 +41,7 @@ public class TutorialPlayer : MonoBehaviour
         #region 視角
         float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
         float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
-        transform.Rotate(v, h, 0);
+        transform.Rotate(0, h, 0);
 
         #endregion
 
@@ -77,7 +77,7 @@ public class TutorialPlayer : MonoBehaviour
         }
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, GroundNomal) * transform.rotation;
         transform.rotation = toRotation;
-        
+
         #endregion
     }
 

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2689596707977388242}
   - component: {fileID: 8723007017142898422}
   - component: {fileID: 5873270313690631659}
+  - component: {fileID: 6044736354838264804}
   - component: {fileID: 8896149952958760605}
   - component: {fileID: 7942388329432602639}
   - component: {fileID: 4390576658440092697}
-  - component: {fileID: 6869827762092505875}
   m_Layer: 0
   m_Name: "\u8EAB\u9AD4"
   m_TagString: Untagged
@@ -97,6 +97,23 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6044736354838264804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545688228503449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453ee1ccf096385449bade455d89cbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Planet: {fileID: 0}
+  PlayerPlaceholder: {fileID: 0}
+  speed: 10
+  JumpHeight: 10
+  MainCameraSpeed: 20
 --- !u!54 &8896149952958760605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -240,23 +257,6 @@ MonoBehaviour:
     strafe: Vertical
     run: Fire3
     jump: Jump
---- !u!114 &6869827762092505875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545688228503449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55470056c21377f439448c6cda220005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Planet: {fileID: 7545688228503449}
-  PlayerPlaceholder: {fileID: 1529481923896554716}
-  speed: 10
-  JumpHeight: 10
-  MainCameraSpeed: 20
 --- !u!1 &1529416048664233104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,11 +1280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55470056c21377f439448c6cda220005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 0}
-  PlayerPlaceholder: {fileID: 1530321213682698574}
   speed: 10
-  JumpHeight: 10
-  MainCameraSpeed: 20
+  mouseSpeed: 0
 --- !u!167 &1686821976083594244
 AudioReverbZone:
   m_ObjectHideFlags: 0
