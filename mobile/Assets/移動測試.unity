@@ -10904,7 +10904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683842686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.32, z: 0}
+  m_LocalPosition: {x: 0, y: 6.531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2120253108}
@@ -10924,7 +10924,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.8763704
+  m_Height: 1.72
   m_Direction: 1
   m_Center: {x: 0, y: -0.43818521, z: 0}
 --- !u!54 &683842689
@@ -10957,7 +10957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Planet: {fileID: 224057233}
   PlayerPlaceholder: {fileID: 1891435803}
-  speed: 10
+  speed: 5
   JumpHeight: 10
   MainCameraSpeed: 20
 --- !u!114 &683842691
@@ -10976,13 +10976,13 @@ MonoBehaviour:
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
   runningSound: {fileID: 8300000, guid: 0c58744c3b6fdd844b8348066c3f703e, type: 3}
-  walkingSpeed: 5
-  runningSpeed: 9
+  walkingSpeed: 0
+  runningSpeed: 10
   movementSmoothness: 0.125
-  jumpForce: 35
+  jumpForce: 0
   mouseSensitivity: 7
   rotationSmoothness: 0.05
-  minVerticalAngle: -90
+  minVerticalAngle: -180
   maxVerticalAngle: 90
   input:
     rotateX: Mouse X
