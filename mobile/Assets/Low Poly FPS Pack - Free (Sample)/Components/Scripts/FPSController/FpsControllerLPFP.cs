@@ -10,8 +10,15 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(AudioSource))]
     public class FpsControllerLPFP : MonoBehaviour
     {
+        #region 血量
+        [Header("玩家血量")]
+        public float playerHp;
+        private float playerMaxHp;//最大HP
+
+        #endregion
+
 #pragma warning disable 649
-		[Header("Arms")]
+        [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
         private Transform arms;
 
@@ -106,6 +113,18 @@ namespace FPSControllerLPFP
             minVerticalAngle = maxVerticalAngle;
             maxVerticalAngle = min;
         }
+        #region 玩家扣血
+        public void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "子彈")
+            {
+                playerHp -=10;
+                Debug.Log("玩家目前血量:" + (playerHp / playerMaxHp));
+            }
+
+
+        }
+        #endregion
 
         private static float ClampRotationRestriction(float rotationRestriction, float min, float max)
         {
