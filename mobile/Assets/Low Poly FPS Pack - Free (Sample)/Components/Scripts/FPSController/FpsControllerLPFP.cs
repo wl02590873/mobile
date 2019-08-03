@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FPSControllerLPFP
 {
@@ -13,7 +14,11 @@ namespace FPSControllerLPFP
         #region 血量
         [Header("玩家血量")]
         public float playerHp;
-        private float playerMaxHp;//最大HP
+        private float playerMaxHp = 100;//最大HP
+        [Header("玩家血條UI")]
+        public Image imageHP;
+        [Header("玩家血量文字")]
+        public Text textHP;
 
         #endregion
 
@@ -25,14 +30,14 @@ namespace FPSControllerLPFP
         [Tooltip("The position of the arms and gun camera relative to the fps controller GameObject."), SerializeField]
         private Vector3 armPosition;
 
-		[Header("Audio Clips")]
+        [Header("Audio Clips")]
         [Tooltip("The audio clip that is played while walking."), SerializeField]
         private AudioClip walkingSound;
 
         [Tooltip("The audio clip that is played while running."), SerializeField]
         private AudioClip runningSound;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
         [Tooltip("How fast the player moves while walking and strafing."), SerializeField]
         private float walkingSpeed = 5f;
 
@@ -45,7 +50,7 @@ namespace FPSControllerLPFP
         [Tooltip("Amount of force applied to the player when jumping."), SerializeField]
         private float jumpForce = 35f;
 
-		[Header("Look Settings")]
+        [Header("Look Settings")]
         [Tooltip("Rotation speed of the fps controller."), SerializeField]
         private float mouseSensitivity = 7f;
 
@@ -83,7 +88,7 @@ namespace FPSControllerLPFP
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
             _audioSource = GetComponent<AudioSource>();
-			arms = AssignCharactersCamera();
+            arms = AssignCharactersCamera();
             _audioSource.clip = walkingSound;
             _audioSource.loop = true;
             _rotationX = new SmoothRotation(RotationXRaw);
@@ -93,14 +98,14 @@ namespace FPSControllerLPFP
             Cursor.lockState = CursorLockMode.Locked;
             ValidateRotationRestriction();
         }
-			
+
         private Transform AssignCharactersCamera()
         {
             var t = transform;
-			arms.SetPositionAndRotation(t.position, t.rotation);
-			return arms;
+            arms.SetPositionAndRotation(t.position, t.rotation);
+            return arms;
         }
-        
+
         /// Clamps <see cref="minVerticalAngle"/> and <see cref="maxVerticalAngle"/> to valid values and
         /// ensures that <see cref="minVerticalAngle"/> is less than <see cref="maxVerticalAngle"/>.
         private void ValidateRotationRestriction()
@@ -113,13 +118,15 @@ namespace FPSControllerLPFP
             minVerticalAngle = maxVerticalAngle;
             maxVerticalAngle = min;
         }
+
         #region 玩家扣血
         public void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "子彈")
             {
-                playerHp -=10;
-                Debug.Log("玩家目前血量:" + (playerHp / playerMaxHp));
+                playerHp -= 10;
+                imageHP.fillAmount = playerHp / playerMaxHp;
+                textHP.text = playerHp + "/" + playerMaxHp;
             }
 
 
@@ -133,7 +140,7 @@ namespace FPSControllerLPFP
             Debug.LogWarning(message);
             return Mathf.Clamp(rotationRestriction, min, max);
         }
-			
+
         /// Checks if the character is on the ground.
         private void OnCollisionStay()
         {
@@ -150,7 +157,7 @@ namespace FPSControllerLPFP
 
             _isGrounded = true;
         }
-			
+
         /// Processes the character movement and the camera rotation every fixed framerate frame.
         private void FixedUpdate()
         {
@@ -159,11 +166,11 @@ namespace FPSControllerLPFP
             MoveCharacter();
             _isGrounded = false;
         }
-			
+
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
         private void Update()
         {
-			arms.position = transform.position + transform.TransformVector(armPosition);
+            arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
         }
@@ -174,36 +181,36 @@ namespace FPSControllerLPFP
             var rotationY = _rotationY.Update(RotationYRaw, rotationSmoothness);
             var clampedY = RestrictVerticalRotation(rotationY);
             _rotationY.Current = clampedY;
-			var worldUp = arms.InverseTransformDirection(Vector3.up);
-			var rotation = arms.rotation *
+            var worldUp = arms.InverseTransformDirection(Vector3.up);
+            var rotation = arms.rotation *
                            Quaternion.AngleAxis(rotationX, worldUp) *
                            Quaternion.AngleAxis(clampedY, Vector3.left);
             transform.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0f);
-			arms.rotation = rotation;
+            arms.rotation = rotation;
         }
-			
+
         /// Returns the target rotation of the camera around the y axis with no smoothing.
         private float RotationXRaw
         {
             get { return input.RotateX * mouseSensitivity; }
         }
-			
+
         /// Returns the target rotation of the camera around the x axis with no smoothing.
         private float RotationYRaw
         {
             get { return input.RotateY * mouseSensitivity; }
         }
-			
+
         /// Clamps the rotation of the camera around the x axis
         /// between the <see cref="minVerticalAngle"/> and <see cref="maxVerticalAngle"/> values.
         private float RestrictVerticalRotation(float mouseY)
         {
-			var currentAngle = NormalizeAngle(arms.eulerAngles.x);
+            var currentAngle = NormalizeAngle(arms.eulerAngles.x);
             var minY = minVerticalAngle + currentAngle;
             var maxY = maxVerticalAngle + currentAngle;
             return Mathf.Clamp(mouseY, minY + 0.01f, maxY - 0.01f);
         }
-			
+
         /// Normalize an angle between -180 and 180 degrees.
         /// <param name="angleDegrees">angle to normalize</param>
         /// <returns>normalized angle</returns>
@@ -289,7 +296,7 @@ namespace FPSControllerLPFP
                 }
             }
         }
-			
+
         /// A helper for assistance with smoothing the camera rotation.
         private class SmoothRotation
         {
@@ -300,7 +307,7 @@ namespace FPSControllerLPFP
             {
                 _current = startAngle;
             }
-				
+
             /// Returns the smoothed rotation.
             public float Update(float target, float smoothTime)
             {
@@ -312,7 +319,7 @@ namespace FPSControllerLPFP
                 set { _current = value; }
             }
         }
-			
+
         /// A helper for assistance with smoothing the movement.
         private class SmoothVelocity
         {
@@ -330,7 +337,7 @@ namespace FPSControllerLPFP
                 set { _current = value; }
             }
         }
-			
+
         /// Input mappings
         [Serializable]
         private class FpsInput
@@ -364,31 +371,31 @@ namespace FPSControllerLPFP
             {
                 get { return Input.GetAxisRaw(rotateX); }
             }
-				         
+
             /// Returns the value of the virtual axis mapped to rotate the camera around the x axis.        
             public float RotateY
             {
                 get { return Input.GetAxisRaw(rotateY); }
             }
-				        
+
             /// Returns the value of the virtual axis mapped to move the character back and forth.        
             public float Move
             {
                 get { return Input.GetAxisRaw(move); }
             }
-				       
+
             /// Returns the value of the virtual axis mapped to move the character left and right.         
             public float Strafe
             {
                 get { return Input.GetAxisRaw(strafe); }
             }
-				    
+
             /// Returns true while the virtual button mapped to run is held down.          
             public bool Run
             {
                 get { return Input.GetButton(run); }
             }
-				     
+
             /// Returns true during the frame the user pressed down the virtual button mapped to jump.          
             public bool Jump
             {

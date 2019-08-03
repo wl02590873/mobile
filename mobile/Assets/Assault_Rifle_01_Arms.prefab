@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3625985234679401044}
   - component: {fileID: 5490967678847163407}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: "\u8840\u689D"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2749,7 +2749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ebbf09afaa7a14fa049921e4516bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHp: 0
+  playerHp: 100
+  imageHP: {fileID: 5490967678847163407}
+  textHP: {fileID: 5320555795577287833}
   arms: {fileID: 7542979784688763350}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
@@ -13169,7 +13171,7 @@ GameObject:
   - component: {fileID: 5433840032516501357}
   - component: {fileID: 5320555795577287833}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u8840\u91CF\u6587\u5B57"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
