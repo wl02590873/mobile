@@ -178,7 +178,7 @@ namespace FPSControllerLPFP
             var rotationY = _rotationY.Update(RotationYRaw, rotationSmoothness);
             var clampedY = RestrictVerticalRotation(rotationY);
             _rotationY.Current = clampedY;
-            var worldUp = arms.InverseTransformDirection(Vector3.up);
+            var worldUp = arms.InverseTransformDirection(transform.up);
             var rotation = arms.rotation *
                            Quaternion.AngleAxis(rotationX, worldUp) *
                            Quaternion.AngleAxis(clampedY, Vector3.left);

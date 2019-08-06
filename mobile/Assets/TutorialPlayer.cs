@@ -40,9 +40,9 @@ public class TutorialPlayer : MonoBehaviour
         #endregion
 
         #region 視角
-        float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
+        //float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
         //float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
-        transform.Rotate(h, 0, 0);
+        //transform.Rotate(h, 0, 0);
 
         #endregion
 
