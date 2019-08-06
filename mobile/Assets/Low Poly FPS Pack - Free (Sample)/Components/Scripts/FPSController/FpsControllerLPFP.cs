@@ -15,8 +15,6 @@ namespace FPSControllerLPFP
         [Header("玩家血量")]
         public float playerHp;
         private float playerMaxHp = 100;//最大HP
-        [Header("玩家血條UI")]
-        public Image imageHP;
         [Header("玩家血量文字")]
         public Text textHP;
 
@@ -125,8 +123,7 @@ namespace FPSControllerLPFP
             if (collision.gameObject.tag == "子彈")
             {
                 playerHp -= 10;
-                imageHP.fillAmount = playerHp / playerMaxHp;
-                textHP.text = playerHp + "/" + playerMaxHp;
+                textHP.text = ""+playerHp;
             }
 
 
