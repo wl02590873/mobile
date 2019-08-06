@@ -607,11 +607,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: Planet
@@ -622,6 +617,16 @@ PrefabInstance:
       propertyPath: PlayerPlaceholder
       value: 
       objectReference: {fileID: 1946533058}
+    - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7542979785054483853, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -694,6 +699,11 @@ PrefabInstance:
     - target: {fileID: 7542979784688763350, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
