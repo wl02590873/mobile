@@ -45,6 +45,13 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();//連線到伺服器
     }
 
+    public override void OnConnectedToMaster()
+    {
+        base.OnConnectedToMaster();
+        textPrint.text = "連線成功";
+        PhotonNetwork.JoinLobby();//連線成功時加入大廳
+    }
+
     public void BtnCreateRoom()
     {
         PhotonNetwork.CreateRoom(NameCreateRoom, new RoomOptions { MaxPlayers = 20 });//建立房間(房間名稱，房間選項，{最多人數})
@@ -55,12 +62,6 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(NameJoinRoom);
     }
 
-    public override void OnConnectedToMaster()
-    {
-        base.OnConnectedToMaster();
-        textPrint.text = "連線成功";
-        PhotonNetwork.JoinLobby();//連線成功時加入大廳
-    }
 
     public override void OnJoinedLobby()
     {
