@@ -82,6 +82,7 @@ namespace FPSControllerLPFP
         /// Initializes the FpsController on start.
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();

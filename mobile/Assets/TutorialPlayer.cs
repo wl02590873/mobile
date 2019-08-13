@@ -33,12 +33,13 @@ public class TutorialPlayer : MonoBehaviour
 
     void Update()
     {
+/*
         #region 移動
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
         transform.Translate(x, 0, z);
         #endregion
-
+*/
         #region 視角
         //float h = Input.GetAxis("Mouse X") * MainCameraSpeed * Time.deltaTime;
         //float v = Input.GetAxis("Mouse Y") * MainCameraSpeed * Time.deltaTime;
