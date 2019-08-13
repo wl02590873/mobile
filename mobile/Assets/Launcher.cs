@@ -8,11 +8,13 @@ public class Launcher : MonoBehaviourPunCallbacks
     #region 欄位，屬性
     [Header("輸出文字")]
     public Text textPrint;
-    [Header("輸出文字")]
+    [Header("輸入欄位:玩家名稱")]
     public InputField playerIF;//輸入欄位:玩家名稱
+    [Header("輸入欄位:建立房間")]
     public InputField roomCreateIF;//輸入欄位:建立房間
+    [Header("輸入欄位:加入房間")]
     public InputField roomJoinIF;//輸入欄位:加入房間 
-    public Button BtnCreate, BtnJoin;
+    //public Button BtnCreate, BtnJoin;
 
 
     public string namePlayer, nameCreateRoom, nameJoinRoom;//字串:玩家名稱，建房名稱，加入房間名稱
@@ -33,7 +35,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     #endregion
     private void Start()
     {
-        Screen.SetResolution(800, 450, false);
         Connect();
     }
 
@@ -66,24 +67,19 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-        textPrint.text = "進入大廳";
-        playerIF.interactable = true;
-        roomCreateIF.interactable = true;
-        roomJoinIF.interactable = true;
-        BtnCreate.interactable = true;
-        BtnJoin.interactable = true;
+        textPrint.text = "點擊畫面繼續";
     }
 
     public override void OnCreatedRoom()
     {
         textPrint.text = "創建房間成功，房間名稱:" + NameCreateRoom;
-        PhotonNetwork.LoadLevel("遊戲場景");
+        //PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnJoinedRoom()
     {
         textPrint.text = "加入房間成功，房間名稱:" + NameJoinRoom;
-        PhotonNetwork.LoadLevel("遊戲場景");
+        //PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
