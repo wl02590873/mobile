@@ -63,7 +63,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(NameJoinRoom);
     }
 
-
+    #region 覆寫方法
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
@@ -73,13 +73,13 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         textPrint.text = "創建房間成功，房間名稱:" + NameCreateRoom;
-        //PhotonNetwork.LoadLevel("遊戲場景");
+        PhotonNetwork.LoadLevel("房間大廳");
     }
 
     public override void OnJoinedRoom()
     {
         textPrint.text = "加入房間成功，房間名稱:" + NameJoinRoom;
-        //PhotonNetwork.LoadLevel("遊戲場景");
+        PhotonNetwork.LoadLevel("房間大廳");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -91,4 +91,5 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         textPrint.text = "加入房間失敗" + returnCode + "訊息:" + message;
     }
+    #endregion
 }
