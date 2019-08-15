@@ -73,13 +73,13 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         textPrint.text = "創建房間成功，房間名稱:" + NameCreateRoom;
-        PhotonNetwork.LoadLevel("房間大廳");
+        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnJoinedRoom()
     {
         textPrint.text = "加入房間成功，房間名稱:" + NameJoinRoom;
-        PhotonNetwork.LoadLevel("房間大廳");
+        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
