@@ -1549,9 +1549,9 @@ MonoBehaviour:
   currentAmmoText: {fileID: 7542979785008827966}
   totalAmmoText: {fileID: 7542979783451164006}
   Prefabs:
-    bulletPrefab: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8,
+    bulletPrefab: {fileID: 4879702113200764, guid: 399a9d400d1936148b6c8ab974d5f72e,
       type: 3}
-    casingPrefab: {fileID: 4420745226056240, guid: 7be59128a5ee3424faf33d7a408c0b2e,
+    casingPrefab: {fileID: 4420745226056240, guid: d6d2125cf5366d04395bb4b67472edaa,
       type: 3}
     grenadePrefab: {fileID: 4191440083646698, guid: 7b04fe350ed10a741a1e245447860d9e,
       type: 3}
