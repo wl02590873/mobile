@@ -76,6 +76,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     PhotonNetwork.LoadLevel("遊戲場景");
     }
 
+
     public override void OnJoinedRoom()
     {
         textPrint2.text = "加入房間成功，房間名稱:" + NameJoinRoom;
