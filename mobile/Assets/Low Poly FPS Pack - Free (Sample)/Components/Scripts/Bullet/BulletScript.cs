@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 // ----- Low Poly FPS Pack Free Version -----
 public class BulletScript : MonoBehaviour
@@ -18,6 +19,14 @@ public class BulletScript : MonoBehaviour
     [Header("Impact Effect Prefabs")]
     public Transform[] metalImpactPrefabs;
 
+    /// <summary>
+    /// 伺服器刪除物件
+    /// </summary>
+    private void DelayDestroy()
+    {
+        PhotonNetwork.Destroy(gameObject);
+    }
+
     private void Start()
     {
         //Start destroy timer
@@ -32,11 +41,13 @@ public class BulletScript : MonoBehaviour
             //coroutine with random destroy timer
             if (!destroyOnImpact)
         {
+            Invoke("DelayDestroy", 0.5f);
             StartCoroutine(DestroyTimer());
         }
         //Otherwise, destroy bullet on impact
         else
         {
+            Invoke("DelayDestroy", 0.5f);
             Destroy(gameObject);
         }
 
@@ -49,6 +60,8 @@ public class BulletScript : MonoBehaviour
                 Quaternion.LookRotation(collision.contacts[0].normal));
             //Destroy bullet object
             Destroy(gameObject);
+            Invoke("DelayDestroy", 0.5f);
+
         }
 
         //If bullet collides with "Target" tag
@@ -59,6 +72,8 @@ public class BulletScript : MonoBehaviour
                 <TargetScript>().isHit = true;
             //Destroy bullet object
             Destroy(gameObject);
+            Invoke("DelayDestroy", 0.5f);
+
         }
 
         //If bullet collides with "ExplosiveBarrel" tag
@@ -69,6 +84,8 @@ public class BulletScript : MonoBehaviour
                 <ExplosiveBarrelScript>().explode = true;
             //Destroy bullet object
             Destroy(gameObject);
+            Invoke("DelayDestroy", 0.5f);
+
         }
     }
 
@@ -79,6 +96,8 @@ public class BulletScript : MonoBehaviour
             (Random.Range(minDestroyTime, maxDestroyTime));
         //Destroy bullet object
         Destroy(gameObject);
+        Invoke("DelayDestroy", 0.5f);
+
     }
 
     private IEnumerator DestroyAfter()
@@ -87,6 +106,8 @@ public class BulletScript : MonoBehaviour
         yield return new WaitForSeconds(destroyAfter);
         //Destroy bullet object
         Destroy(gameObject);
+        Invoke("DelayDestroy", 0.5f);
+
     }
 }
 // ----- Low Poly FPS Pack Free Version -----

@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace FPSControllerLPFP
 {
@@ -147,6 +148,10 @@ namespace FPSControllerLPFP
             {
                 playerHp -= 10;
                 textHP.text = ""+playerHp;
+                if (playerHp<=0)
+                {
+                    Dead();
+                }
             }
 
 
@@ -210,6 +215,7 @@ namespace FPSControllerLPFP
             arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
+            ExcGame();
         }
 
         private void RotateCameraAndCharacter()
@@ -224,6 +230,14 @@ namespace FPSControllerLPFP
                            Quaternion.AngleAxis(clampedY, Vector3.left);
             transform.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0f);
             arms.rotation = rotation;
+        }
+
+        private void ExcGame()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
         }
 
         /// Returns the target rotation of the camera around the y axis with no smoothing.
@@ -349,6 +363,19 @@ namespace FPSControllerLPFP
             }
         }
 #endregion
+
+        /// <summary>
+        /// 死亡方法
+        /// </summary>
+        private void Dead()
+        {
+            if (pv.IsMine)
+            {
+                PhotonNetwork.LeaveRoom();
+                PhotonNetwork.LoadLevel("遊戲大廳");
+            }
+        }
+
 
         /// A helper for assistance with smoothing the camera rotation.
         private class SmoothRotation
