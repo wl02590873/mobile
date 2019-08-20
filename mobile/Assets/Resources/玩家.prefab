@@ -2835,7 +2835,7 @@ MonoBehaviour:
   player: {fileID: 7542979784688763178}
   obj: {fileID: 7542979783256269574}
   positionNext: {x: 0, y: 0, z: 0}
-  smoothSpeed: 0.5
+  smoothSpeed: 1.5
   arms: {fileID: 7542979784688763350}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
