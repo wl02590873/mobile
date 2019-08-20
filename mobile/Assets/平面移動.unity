@@ -607,6 +607,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: Planet
@@ -622,10 +627,15 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
-      propertyPath: m_Constraints
-      value: 126
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7542979785054483853, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
@@ -701,15 +711,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7542979784688763176, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
-      propertyPath: m_Constraints
-      value: 126
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7542979785054483853, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}

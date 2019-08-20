@@ -2649,7 +2649,6 @@ GameObject:
   - component: {fileID: 7542979784688763181}
   - component: {fileID: 7542979784688763178}
   - component: {fileID: 2603780270000184045}
-  - component: {fileID: 4665595268366545827}
   m_Layer: 0
   m_Name: "\u73A9\u5BB6"
   m_TagString: Player
@@ -2832,6 +2831,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHp: 100
   textHP: {fileID: 1926489642440046907}
+  pv: {fileID: 2603780270000184045}
+  player: {fileID: 7542979784688763178}
+  obj: {fileID: 7542979783256269574}
+  positionNext: {x: 0, y: 0, z: 0}
   arms: {fileID: 7542979784688763350}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
@@ -2866,28 +2869,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 4665595268366545827}
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4665595268366545827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7542979784688763351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!1 &7542979784728230761
 GameObject:
   m_ObjectHideFlags: 0

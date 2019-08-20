@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 namespace FPSControllerLPFP
 {
@@ -9,7 +10,7 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(AudioSource))]
-    public class FpsControllerLPFP : MonoBehaviour
+    public class FpsControllerLPFP : MonoBehaviourPun,IPunObservable
     {
         #region 血量
         [Header("玩家血量")]
@@ -18,6 +19,18 @@ namespace FPSControllerLPFP
         [Header("玩家血量文字")]
         public Text textHP;
 
+        #endregion
+
+        #region 玩家控制開關
+        [Header("Photon元件")]
+        public PhotonView pv;
+        [Header("Player腳本")]
+        public FpsControllerLPFP player;
+        [Header("攝影機")]
+        public GameObject obj;
+        #endregion
+        #region 同步座標資訊
+        public Vector3 positionNext;
         #endregion
 
 #pragma warning disable 649
@@ -82,6 +95,12 @@ namespace FPSControllerLPFP
         /// Initializes the FpsController on start.
         private void Start()
         {
+            //如果不是自己的物件
+            if (!pv.IsMine)
+            {
+                player.enabled = false;//玩家元件
+                obj.SetActive(false);//玩家攝影機
+            }
             Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -160,9 +179,26 @@ namespace FPSControllerLPFP
         private void FixedUpdate()
         {
             // FixedUpdate is used instead of Update because this code is dealing with physics and smoothing.
+            //如果是自己物件執行控制玩家
+            if (pv.IsMine)
+            {
             RotateCameraAndCharacter();
             MoveCharacter();
+            }
+            //否則同步座標
+            else
+            {
+                SmoothMove();
+            }
             _isGrounded = false;
+        }
+        /// <summary>
+        /// 平滑移動
+        /// </summary>
+        private void SmoothMove()
+        {
+            //其他玩家的座標=(原本座標，同步座標資訊，百分比-同步平滑速度*時間差)
+            transform.position = Vector3.Lerp(transform.position, positionNext, 0.5f * Time.deltaTime);
         }
 
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
@@ -294,6 +330,22 @@ namespace FPSControllerLPFP
                 }
             }
         }
+
+        #region 同步內容
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            //如果 正在寫入資料
+            if (stream.IsWriting)
+            {
+                stream.SendNext(transform.position);//傳遞資料座標
+            }
+            //如果正在讀取資料
+            else if (stream.IsReading)
+            {
+                positionNext = (Vector3)stream.ReceiveNext();//同步座標資訊
+            }
+        }
+#endregion
 
         /// A helper for assistance with smoothing the camera rotation.
         private class SmoothRotation

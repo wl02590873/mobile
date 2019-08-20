@@ -2,8 +2,10 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 // ----- Low Poly FPS Pack Free Version -----
-public class AutomaticGunScriptLPFP : MonoBehaviour {
+public class AutomaticGunScriptLPFP : MonoBehaviour
+{
 
 	//Animator component attached to weapon
 	Animator anim;

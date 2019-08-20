@@ -56,6 +56,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void BtnCreateRoom()
     {
         PhotonNetwork.CreateRoom(NameCreateRoom, new RoomOptions { MaxPlayers = 20 });//建立房間(房間名稱，房間選項，{最多人數})
+       
     }
 
     public void BtnJoinRoom()
