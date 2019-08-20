@@ -7,7 +7,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 {
     #region 欄位，屬性
     [Header("輸出文字")]
-    public Text textPrint;
+    public Text textPrint,textPrint2;
     [Header("輸入欄位:玩家名稱")]
     public InputField playerIF;//輸入欄位:玩家名稱
     [Header("輸入欄位:建立房間")]
@@ -72,24 +72,24 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
-        textPrint.text = "創建房間成功，房間名稱:" + NameCreateRoom;
+        textPrint2.text = "創建房間成功，房間名稱:" + NameCreateRoom;
     PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnJoinedRoom()
     {
-        textPrint.text = "加入房間成功，房間名稱:" + NameJoinRoom;
+        textPrint2.text = "加入房間成功，房間名稱:" + NameJoinRoom;
         PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        textPrint.text = "建立房間失敗" + returnCode + "訊息:" + message;
+        textPrint2.text = "建立房間失敗" + returnCode + "訊息:" + message;
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        textPrint.text = "加入房間失敗" + returnCode + "訊息:" + message;
+        textPrint2.text = "加入房間失敗" + returnCode + "訊息:" + message;
     }
     #endregion
 }
