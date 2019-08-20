@@ -30,7 +30,10 @@ namespace FPSControllerLPFP
         public GameObject obj;
         #endregion
         #region 同步座標資訊
+        [Header("同步座標資訊")]
         public Vector3 positionNext;
+        [Header("同步平滑速度"),Range(0.1f,5.0f)]
+        public float smoothSpeed = 1.5f;
         #endregion
 
 #pragma warning disable 649
@@ -198,7 +201,7 @@ namespace FPSControllerLPFP
         private void SmoothMove()
         {
             //其他玩家的座標=(原本座標，同步座標資訊，百分比-同步平滑速度*時間差)
-            transform.position = Vector3.Lerp(transform.position, positionNext, 0.5f * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, positionNext, smoothSpeed * Time.deltaTime);
         }
 
         /// Moves the camera to the character, processes jumping and plays sounds every frame.

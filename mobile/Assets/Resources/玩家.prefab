@@ -2835,6 +2835,7 @@ MonoBehaviour:
   player: {fileID: 7542979784688763178}
   obj: {fileID: 7542979783256269574}
   positionNext: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.5
   arms: {fileID: 7542979784688763350}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
@@ -2869,10 +2870,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 7542979784688763178}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

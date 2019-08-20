@@ -14,7 +14,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     public InputField roomCreateIF;//輸入欄位:建立房間
     [Header("輸入欄位:加入房間")]
     public InputField roomJoinIF;//輸入欄位:加入房間 
-    //public Button BtnCreate, BtnJoin;
 
 
     public string namePlayer, nameCreateRoom, nameJoinRoom;//字串:玩家名稱，建房名稱，加入房間名稱
@@ -56,12 +55,13 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void BtnCreateRoom()
     {
         PhotonNetwork.CreateRoom(NameCreateRoom, new RoomOptions { MaxPlayers = 20 });//建立房間(房間名稱，房間選項，{最多人數})
-       
+        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public void BtnJoinRoom()
     {
         PhotonNetwork.JoinRoom(NameJoinRoom);
+        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     #region 覆寫方法
@@ -74,13 +74,11 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         textPrint.text = "創建房間成功，房間名稱:" + NameCreateRoom;
-        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnJoinedRoom()
     {
         textPrint.text = "加入房間成功，房間名稱:" + NameJoinRoom;
-        PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
