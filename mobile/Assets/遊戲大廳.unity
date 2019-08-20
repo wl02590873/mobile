@@ -852,6 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleUI: {fileID: 1887480945}
+  textError: {fileID: 1255074372}
   NewRoom: {fileID: 758969436}
   JoinUI: {fileID: 1553712326}
   PlayerNameUI: {fileID: 76540906}
@@ -1416,7 +1417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1255074373
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class HallUI : MonoBehaviourPunCallbacks
 {
     [Header("標題UI")]
     public GameObject titleUI;
+    [Header("文字訊息")]
+    public GameObject textError;
     [Header("新增房間UI")]
     public GameObject NewRoom;
     [Header("加入房間UI")]
@@ -18,7 +20,8 @@ public class HallUI : MonoBehaviourPunCallbacks
     {
         if (UIint == 0)//關閉起始畫面
         {
-        titleUI.SetActive(false);
+            titleUI.SetActive(false);
+            textError.SetActive(true);
         }
         if (UIint == 1)//新增房間
         {
