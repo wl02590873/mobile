@@ -33,8 +33,9 @@ namespace FPSControllerLPFP
         #region 同步座標資訊
         [Header("同步座標資訊")]
         public Vector3 positionNext;
-        [Header("同步平滑速度"),Range(0.1f,5.0f)]
-        public float smoothSpeed = 1.5f;
+        public Vector3 RotateNext;
+        [Header("同步平滑速度"),Range(0.1f,20.0f)]
+        public float smoothSpeed = 15.0f;
         #endregion
 
 #pragma warning disable 649
@@ -102,7 +103,7 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                player.enabled = false;//玩家元件
+                //player.enabled = false;//玩家元件
                 obj.SetActive(false);//玩家攝影機
             }
             Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
@@ -209,6 +210,11 @@ namespace FPSControllerLPFP
             transform.position = Vector3.Lerp(transform.position, positionNext, smoothSpeed * Time.deltaTime);
         }
 
+        private void SmoothRotateWeapon()
+        {
+            //transform.rotation = Vector3.Lerp(transform.rotation, RotateNext, smoothSpeed * Time.deltaTime);
+        }
+
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
         private void Update()
         {
@@ -218,6 +224,7 @@ namespace FPSControllerLPFP
             ExcGame();
         }
 
+        #region 原本視角控制跳躍
         private void RotateCameraAndCharacter()
         {
             var rotationX = _rotationX.Update(RotationXRaw, rotationSmoothness);
@@ -232,6 +239,9 @@ namespace FPSControllerLPFP
             arms.rotation = rotation;
         }
 
+        /// <summary>
+        /// 離開遊戲
+        /// </summary>
         private void ExcGame()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -347,6 +357,7 @@ namespace FPSControllerLPFP
                 }
             }
         }
+        #endregion
 
         #region 同步內容
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -355,11 +366,14 @@ namespace FPSControllerLPFP
             if (stream.IsWriting)
             {
                 stream.SendNext(transform.position);//傳遞資料座標
+                stream.SendNext(RotateNext);//傳遞旋轉資料
+
             }
             //如果正在讀取資料
             else if (stream.IsReading)
             {
                 positionNext = (Vector3)stream.ReceiveNext();//同步座標資訊
+                RotateNext=(Vector3)stream.ReceiveNext();//同步旋轉資訊
             }
         }
 #endregion

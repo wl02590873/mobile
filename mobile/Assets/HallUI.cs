@@ -15,6 +15,11 @@ public class HallUI : MonoBehaviourPunCallbacks
     [Header("玩家名稱輸入UI")]
     public GameObject PlayerNameUI;
 
+    private void Start()
+    {
+        titleUI.SetActive(true);
+        textError.SetActive(false);
+    }
 
     public void title(int UIint)
     {

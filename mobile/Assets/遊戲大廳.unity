@@ -1181,7 +1181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5927\u6A19\u984C"
+  m_Text: "\u904A\u6232\u540D\u7A31"
 --- !u!222 &916435322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1719,7 +1719,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d4d560ca5099f8f419ac5bab835829ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
