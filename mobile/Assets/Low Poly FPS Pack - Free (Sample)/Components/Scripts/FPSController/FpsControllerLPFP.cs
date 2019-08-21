@@ -29,6 +29,7 @@ namespace FPSControllerLPFP
         public GameObject playerUI;
         [Header("攝影機")]
         public GameObject obj;
+        public GameObject cam;
         #endregion
         #region 同步座標資訊
         [Header("同步座標資訊")]
@@ -103,10 +104,11 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                playerUI.SetActive(false);//玩家元件
+                //playerPV.enabled = false;
+                playerUI.SetActive(false);//玩家UI
                 obj.SetActive(false);//玩家攝影機
+                cam.SetActive(false);//玩家攝影機
             }
-            Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
@@ -193,11 +195,13 @@ namespace FPSControllerLPFP
             {
             RotateCameraAndCharacter();
             MoveCharacter();
+             Jump();
             }
             //否則同步座標
             else
             {
                 SmoothMove();
+                SmoothRotateWeapon();
             }
             _isGrounded = false;
         }
@@ -212,7 +216,7 @@ namespace FPSControllerLPFP
 
         private void SmoothRotateWeapon()
         {
-            //transform.rotation = Vector3.Lerp(transform.rotation, RotateNext, smoothSpeed * Time.deltaTime);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, RotateNext, smoothSpeed * Time.deltaTime);
         }
 
         /// Moves the camera to the character, processes jumping and plays sounds every frame.

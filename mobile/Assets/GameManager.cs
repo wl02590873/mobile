@@ -8,9 +8,15 @@ public class GameManager : MonoBehaviour
     public GameObject prefabPlayer;
     [Header("玩家重生點")]
     public Transform[] spawnPlayer;
+    [Header("遊戲時間")]
+    public Text TimeUI;
+
+    private float gameTime;
+
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
         SpawnPlayer();
     }
 
@@ -24,5 +30,14 @@ public class GameManager : MonoBehaviour
 
         //PhotonNetwork連線.實例化(物件名稱，座標，角度)
         PhotonNetwork.Instantiate(prefabPlayer.name, spawnPlayer[r].position, Quaternion.identity);
+    }
+
+    private void GameTime()
+    {
+        gameTime++;
+        if (gameTime>=180)
+        {
+
+        }
     }
 }

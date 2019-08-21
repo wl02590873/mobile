@@ -1207,6 +1207,7 @@ MonoBehaviour:
   - {fileID: 2131035189}
   - {fileID: 2022427493}
   - {fileID: 461746100}
+  TimeUI: {fileID: 0}
 --- !u!1 &2022427492
 GameObject:
   m_ObjectHideFlags: 0

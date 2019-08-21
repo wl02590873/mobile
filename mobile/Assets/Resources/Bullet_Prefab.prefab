@@ -189,6 +189,8 @@ MonoBehaviour:
   maxDestroyTime: 0.05
   metalImpactPrefabs:
   - {fileID: 4458509032938956, guid: 79927c6543a058b4383885fac101fe2e, type: 3}
+  bullet: {fileID: 0}
+  bulletSpawn: {x: 0, y: 0, z: 0}
 --- !u!114 &2203647082495159080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +206,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

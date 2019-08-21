@@ -21,9 +21,18 @@ public class HallUI : MonoBehaviourPunCallbacks
         textError.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            titleUI.SetActive(false);
+            textError.SetActive(true);
+        }
+    }
+
     public void title(int UIint)
     {
-        if (UIint == 0)//關閉起始畫面
+        if (UIint == 0 || (Input.anyKey))//關閉起始畫面
         {
             titleUI.SetActive(false);
             textError.SetActive(true);

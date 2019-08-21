@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
-
+using Photon.Pun;
 // ----- Low Poly FPS Pack Free Version -----
 public class AutomaticGunScriptLPFP : MonoBehaviour
 {
@@ -406,8 +405,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour
 				}
 
 				//Spawn bullet from bullet spawnpoint
-				var bullet = (Transform)Instantiate (
-					Prefabs.bulletPrefab,
+				var bullet = 
+                    PhotonNetwork.Instantiate (
+                    Prefabs.bulletPrefab.name,
 					Spawnpoints.bulletSpawnPoint.transform.position,
 					Spawnpoints.bulletSpawnPoint.transform.rotation);
 

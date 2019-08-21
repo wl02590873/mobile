@@ -19,6 +19,10 @@ public class BulletScript : MonoBehaviour
     [Header("Impact Effect Prefabs")]
     public Transform[] metalImpactPrefabs;
 
+    public GameObject bullet;
+
+    public Vector3 bulletSpawn;
+
     /// <summary>
     /// 伺服器刪除物件
     /// </summary>
