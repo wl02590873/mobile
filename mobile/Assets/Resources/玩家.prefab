@@ -2910,9 +2910,10 @@ MonoBehaviour:
   playerHp: 100
   textHP: {fileID: 1926489642440046907}
   pv: {fileID: 2603780270000184045}
-  player: {fileID: 7542979784688763178}
+  playerUI: {fileID: 7542979785054483850}
   obj: {fileID: 7542979783256269574}
   positionNext: {x: 0, y: 0, z: 0}
+  RotateNext: {x: 0, y: 0, z: 0}
   smoothSpeed: 1.5
   arms: {fileID: 7542979784688763350}
   armPosition: {x: 0, y: 0, z: 0}

@@ -25,8 +25,8 @@ namespace FPSControllerLPFP
         #region 玩家控制開關
         [Header("Photon元件")]
         public PhotonView pv;
-        [Header("Player腳本")]
-        public FpsControllerLPFP player;
+        [Header("玩家UI")]
+        public GameObject playerUI;
         [Header("攝影機")]
         public GameObject obj;
         #endregion
@@ -103,7 +103,7 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                //player.enabled = false;//玩家元件
+                playerUI.SetActive(false);//玩家元件
                 obj.SetActive(false);//玩家攝影機
             }
             Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
