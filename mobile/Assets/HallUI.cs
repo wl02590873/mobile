@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 using Photon.Pun;
 
 public class HallUI : MonoBehaviourPunCallbacks

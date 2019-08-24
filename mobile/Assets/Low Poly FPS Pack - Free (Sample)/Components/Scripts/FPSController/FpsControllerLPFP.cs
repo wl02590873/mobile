@@ -104,7 +104,6 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                //playerPV.enabled = false;
                 playerUI.SetActive(false);//玩家UI
                 obj.SetActive(false);//玩家攝影機
                 cam.SetActive(false);//玩家攝影機
