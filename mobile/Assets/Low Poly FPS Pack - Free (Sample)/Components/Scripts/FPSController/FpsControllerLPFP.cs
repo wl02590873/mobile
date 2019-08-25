@@ -35,8 +35,8 @@ namespace FPSControllerLPFP
         [Header("同步座標資訊")]
         public Vector3 positionNext;
         public Vector3 RotateNext;
-        [Header("同步平滑速度"),Range(0.1f,20.0f)]
-        public float smoothSpeed = 15.0f;
+        [Header("同步平滑速度"),Range(0.1f,50.0f)]
+        public float smoothSpeed = 30.0f;
         #endregion
 
 #pragma warning disable 649
