@@ -52,7 +52,7 @@ public class BulletScript : MonoBehaviour
         else
         {
             Invoke("DelayDestroy", 0.5f);
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
 
         //If bullet collides with "Metal" tag
@@ -63,7 +63,7 @@ public class BulletScript : MonoBehaviour
                 (0, metalImpactPrefabs.Length)], transform.position,
                 Quaternion.LookRotation(collision.contacts[0].normal));
             //Destroy bullet object
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
             Invoke("DelayDestroy", 0.5f);
 
         }
@@ -75,7 +75,7 @@ public class BulletScript : MonoBehaviour
             collision.transform.gameObject.GetComponent
                 <TargetScript>().isHit = true;
             //Destroy bullet object
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
             Invoke("DelayDestroy", 0.5f);
 
         }
@@ -87,7 +87,7 @@ public class BulletScript : MonoBehaviour
             collision.transform.gameObject.GetComponent
                 <ExplosiveBarrelScript>().explode = true;
             //Destroy bullet object
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
             Invoke("DelayDestroy", 0.5f);
 
         }
@@ -99,7 +99,7 @@ public class BulletScript : MonoBehaviour
         yield return new WaitForSeconds
             (Random.Range(minDestroyTime, maxDestroyTime));
         //Destroy bullet object
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         Invoke("DelayDestroy", 0.5f);
 
     }
@@ -109,7 +109,7 @@ public class BulletScript : MonoBehaviour
         //Wait for set amount of time
         yield return new WaitForSeconds(destroyAfter);
         //Destroy bullet object
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         Invoke("DelayDestroy", 0.5f);
 
     }

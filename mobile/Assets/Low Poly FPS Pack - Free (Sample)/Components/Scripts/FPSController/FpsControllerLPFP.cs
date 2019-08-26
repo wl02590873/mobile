@@ -148,6 +148,10 @@ namespace FPSControllerLPFP
         {
             if (collision.gameObject.tag == "子彈")
             {
+                CancelInvoke();//取消所有事件
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
+                Invoke("DelayDestroy", 0.5f);
                 playerHp -= 10;
                 textHP.text = ""+playerHp;
                 if (playerHp<=0)
@@ -204,6 +208,7 @@ namespace FPSControllerLPFP
             }
             _isGrounded = false;
         }
+        [PunRPC]
         /// <summary>
         /// 平滑移動
         /// </summary>
@@ -215,7 +220,7 @@ namespace FPSControllerLPFP
 
         private void SmoothRotateWeapon()
         {
-            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, RotateNext, smoothSpeed * Time.deltaTime);
+            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, RotateNext, smoothSpeed * Time.deltaTime);
         }
 
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
@@ -369,7 +374,7 @@ namespace FPSControllerLPFP
             if (stream.IsWriting)
             {
                 stream.SendNext(transform.position);//傳遞資料座標
-                stream.SendNext(RotateNext);//傳遞旋轉資料
+                stream.SendNext(transform.rotation.eulerAngles);//傳遞旋轉資料
 
             }
             //如果正在讀取資料
