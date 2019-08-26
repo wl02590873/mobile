@@ -783,6 +783,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7542979784688763178, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: playerHp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603780270000184045, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7542979784688763179, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
         type: 3}
       propertyPath: Planet
@@ -793,10 +808,5 @@ PrefabInstance:
       propertyPath: PlayerPlaceholder
       value: 
       objectReference: {fileID: 1891435803}
-    - target: {fileID: 7542979784688763178, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c,
-        type: 3}
-      propertyPath: playerHp
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ddcf1e4888317e4a9f5b8bb9b58b34c, type: 3}

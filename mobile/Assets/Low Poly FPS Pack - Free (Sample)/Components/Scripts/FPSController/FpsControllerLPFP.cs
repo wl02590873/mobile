@@ -16,6 +16,7 @@ namespace FPSControllerLPFP
         #region 血量
         [Header("玩家血量")]
         public float playerHp;
+        
         private float playerMaxHp = 100;//最大HP
         [Header("玩家血量文字")]
         public Text textHP;
@@ -148,10 +149,6 @@ namespace FPSControllerLPFP
         {
             if (collision.gameObject.tag == "子彈")
             {
-                CancelInvoke();//取消所有事件
-                GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<Collider2D>().enabled = false;
-                Invoke("DelayDestroy", 0.5f);
                 playerHp -= 10;
                 textHP.text = ""+playerHp;
                 if (playerHp<=0)

@@ -3,7 +3,7 @@ using System.Collections;
 using Photon.Pun;
 
 // ----- Low Poly FPS Pack Free Version -----
-public class BulletScript : MonoBehaviour
+public class BulletScript : MonoBehaviourPun
 {
 
     [Range(5, 100)]

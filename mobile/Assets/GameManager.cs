@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
+        //Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
         SpawnPlayer();
+        InvokeRepeating("GameTime",0, 1);
     }
 
     /// <summary>
@@ -34,10 +35,6 @@ public class GameManager : MonoBehaviour
 
     private void GameTime()
     {
-        gameTime++;
-        if (gameTime>=180)
-        {
-
-        }
+        TimeUI.text = "時間:" + gameTime++;
     }
 }

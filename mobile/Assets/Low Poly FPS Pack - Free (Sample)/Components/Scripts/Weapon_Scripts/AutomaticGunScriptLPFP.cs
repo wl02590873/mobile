@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Photon.Pun;
 // ----- Low Poly FPS Pack Free Version -----
-public class AutomaticGunScriptLPFP : MonoBehaviour
+public class AutomaticGunScriptLPFP : MonoBehaviourPun
 {
 
 	//Animator component attached to weapon
@@ -414,9 +414,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour
 				//Add velocity to the bullet
 				bullet.GetComponent<Rigidbody>().velocity = 
 					bullet.transform.forward * bulletForce;
-				
-				//Spawn casing prefab at spawnpoint
-				Instantiate (Prefabs.casingPrefab, 
+
+                //Spawn casing prefab at spawnpoint
+                PhotonNetwork.Instantiate (
+                    Prefabs.casingPrefab.name, 
 					Spawnpoints.casingSpawnPoint.transform.position, 
 					Spawnpoints.casingSpawnPoint.transform.rotation);
 			}

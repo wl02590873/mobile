@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 // ----- Low Poly FPS Pack Free Version -----
-public class CasingScript : MonoBehaviour {
+public class CasingScript : MonoBehaviourPun {
 
 	[Header("Force X")]
 	[Tooltip("Minimum force on X axis")]

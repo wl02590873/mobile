@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6348728304782565302}
   m_Layer: 8
   m_Name: Big_Casing_Prefab
-  m_TagString: Untagged
+  m_TagString: "\u5B50\u5F48"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
