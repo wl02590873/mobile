@@ -33,6 +33,21 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.Instantiate(prefabPlayer.name, spawnPlayer[r].position, Quaternion.identity);
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        //如果 正在寫入資料
+        if (stream.IsWriting)
+        {
+
+
+        }
+        //如果正在讀取資料
+        else if (stream.IsReading)
+        {
+           
+        }
+    }
+
     private void GameTime()
     {
         TimeUI.text = "時間:" + gameTime++;

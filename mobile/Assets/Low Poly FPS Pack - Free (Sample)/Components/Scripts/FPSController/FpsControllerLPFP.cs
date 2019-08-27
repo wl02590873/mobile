@@ -28,6 +28,9 @@ namespace FPSControllerLPFP
         public PhotonView pv;
         [Header("玩家UI")]
         public GameObject playerUI;
+        [Header("動畫程式")]
+        public GameObject AnimatorScript;
+
         [Header("攝影機")]
         public GameObject obj;
         public GameObject cam;
@@ -40,6 +43,7 @@ namespace FPSControllerLPFP
         public float smoothSpeed = 30.0f;
         #endregion
 
+        #region 數值設定
 #pragma warning disable 649
         [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
@@ -86,7 +90,7 @@ namespace FPSControllerLPFP
         [Tooltip("The names of the axes and buttons for Unity's Input Manager."), SerializeField]
         private FpsInput input;
 #pragma warning restore 649
-
+        #endregion
         private Rigidbody _rigidbody;
         private CapsuleCollider _collider;
         private AudioSource _audioSource;
@@ -105,6 +109,7 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
+                GetComponent<PlayerAnimator>().enabled=false;
                 playerUI.SetActive(false);//玩家UI
                 obj.SetActive(false);//玩家攝影機
                 cam.SetActive(false);//玩家攝影機
