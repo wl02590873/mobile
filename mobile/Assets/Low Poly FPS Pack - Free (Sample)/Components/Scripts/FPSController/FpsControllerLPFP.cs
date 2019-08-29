@@ -16,7 +16,10 @@ namespace FPSControllerLPFP
         #region 血量
         [Header("玩家血量")]
         public float playerHp;
-        
+
+        [Header("生命數量")]
+        public int life;
+
         private float playerMaxHp = 100;//最大HP
         [Header("玩家血量文字")]
         public Text textHP;
