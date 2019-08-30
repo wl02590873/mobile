@@ -20,11 +20,11 @@ public class PlayerAnimator : MonoBehaviour
 
     public void palyerW()
     {
-        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             playerMobile.GetComponent<Animator>().SetBool("前", true);
         }
-        else if (Input.GetKeyUp(KeyCode.W))
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             playerMobile.GetComponent<Animator>().SetBool("前", false);
         }

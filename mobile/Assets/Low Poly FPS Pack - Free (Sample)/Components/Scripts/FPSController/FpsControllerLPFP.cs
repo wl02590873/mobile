@@ -161,6 +161,7 @@ namespace FPSControllerLPFP
                 textHP.text = ""+playerHp;
                 if (playerHp<=0)
                 {
+                    life -= 1;
                     Dead();
                 }
             }
@@ -398,8 +399,13 @@ namespace FPSControllerLPFP
         {
             if (pv.IsMine)
             {
+                gameObject.transform.position=new Vector3()
+                if (life <= 0)
+                {
                 PhotonNetwork.LeaveRoom();
                 PhotonNetwork.LoadLevel("遊戲大廳");
+                Cursor.lockState = CursorLockMode.None;
+                }
             }
         }
 

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
         SpawnPlayer();
-        InvokeRepeating("GameTime",0, 1);
+        InvokeRepeating("GameTime", 0, 1);
     }
 
     /// <summary>
@@ -33,23 +33,14 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.Instantiate(prefabPlayer.name, spawnPlayer[r].position, Quaternion.identity);
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        //如果 正在寫入資料
-        if (stream.IsWriting)
-        {
-
-
-        }
-        //如果正在讀取資料
-        else if (stream.IsReading)
-        {
-           
-        }
-    }
-
     private void GameTime()
     {
         TimeUI.text = "時間:" + gameTime++;
+    }
+
+    private void PlayerSpawn()
+    {
+        //隨機=隨機(0,陣列長度);
+        int r = Random.Range(0, spawnPlayer.Length);
     }
 }
