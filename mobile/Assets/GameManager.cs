@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         TimeUI.text = "時間:" + gameTime++;
     }
 
-    private void PlayerSpawn()
+    private void PlayerSpawn ()
     {
         //隨機=隨機(0,陣列長度);
         int r = Random.Range(0, spawnPlayer.Length);
