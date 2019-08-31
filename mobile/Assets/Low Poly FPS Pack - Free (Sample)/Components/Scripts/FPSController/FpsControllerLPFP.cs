@@ -31,8 +31,6 @@ namespace FPSControllerLPFP
         public PhotonView pv;
         [Header("玩家UI")]
         public GameObject playerUI;
-        [Header("動畫程式")]
-        public GameObject AnimatorScript;
 
         [Header("攝影機")]
         public GameObject obj;
@@ -399,7 +397,6 @@ namespace FPSControllerLPFP
         {
             if (pv.IsMine)
             {
-                gameObject.transform.position=new Vector3()
                 if (life <= 0)
                 {
                 PhotonNetwork.LeaveRoom();

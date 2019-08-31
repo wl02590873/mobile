@@ -2892,7 +2892,6 @@ MonoBehaviour:
   textHP: {fileID: 1926489642440046907}
   pv: {fileID: 2603780270000184045}
   playerUI: {fileID: 7542979785054483850}
-  AnimatorScript: {fileID: 0}
   obj: {fileID: 7542979783256269574}
   cam: {fileID: 7542979783850634967}
   positionNext: {x: 0, y: 0, z: 0}
