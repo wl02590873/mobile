@@ -7,12 +7,18 @@ using Photon.Realtime;
 
 namespace FPSControllerLPFP
 {
+
     /// Manages a first person character
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(AudioSource))]
-    public class FpsControllerLPFP : MonoBehaviourPun,IPunObservable
+    public class FpsControllerLPFP : MonoBehaviourPun, IPunObservable
     {
+        //
+        public delegate void PlayerDEAD();
+        //死亡事件
+        public event PlayerDEAD Life0;
+        public event PlayerDEAD Dead;
         #region 血量
         [Header("玩家血量")]
         public float playerHp;
@@ -40,7 +46,7 @@ namespace FPSControllerLPFP
         [Header("同步座標資訊")]
         public Vector3 positionNext;
         public Vector3 RotateNext;
-        [Header("同步平滑速度"),Range(0.1f,50.0f)]
+        [Header("同步平滑速度"), Range(0.1f, 50.0f)]
         public float smoothSpeed = 30.0f;
         #endregion
 
@@ -110,7 +116,7 @@ namespace FPSControllerLPFP
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                GetComponent<PlayerAnimator>().enabled=false;
+                GetComponent<PlayerAnimator>().enabled = false;
                 playerUI.SetActive(false);//玩家UI
                 obj.SetActive(false);//玩家攝影機
                 cam.SetActive(false);//玩家攝影機
@@ -153,18 +159,17 @@ namespace FPSControllerLPFP
         #region 玩家扣血
         public void OnCollisionEnter(Collision collision)
         {
+            
             if (collision.gameObject.tag == "子彈")
             {
                 playerHp -= 10;
-                textHP.text = ""+playerHp;
-                if (playerHp<=0)
+                textHP.text = "" + playerHp;
+                if (playerHp <= 0)
                 {
                     life -= 1;
                     Dead();
                 }
             }
-
-
         }
         #endregion
 
@@ -200,9 +205,9 @@ namespace FPSControllerLPFP
             //如果是自己物件執行控制玩家
             if (pv.IsMine)
             {
-            RotateCameraAndCharacter();
-            MoveCharacter();
-             Jump();
+                RotateCameraAndCharacter();
+                MoveCharacter();
+                Jump();
             }
             //否則同步座標
             else
@@ -385,27 +390,22 @@ namespace FPSControllerLPFP
             else if (stream.IsReading)
             {
                 positionNext = (Vector3)stream.ReceiveNext();//同步座標資訊
-                RotateNext=(Vector3)stream.ReceiveNext();//同步旋轉資訊
+                RotateNext = (Vector3)stream.ReceiveNext();//同步旋轉資訊
             }
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// 死亡方法
         /// </summary>
-        private void Dead()
+        private void Dead0()
         {
-            if (pv.IsMine)
+            if (playerHp<=0)
             {
-                if (life <= 0)
-                {
-                PhotonNetwork.LeaveRoom();
-                PhotonNetwork.LoadLevel("遊戲大廳");
-                Cursor.lockState = CursorLockMode.None;
-                }
+            Dead();
+                life -= 1;
             }
         }
-
 
         /// A helper for assistance with smoothing the camera rotation.
         private class SmoothRotation
