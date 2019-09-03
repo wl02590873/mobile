@@ -7,7 +7,7 @@ public class RotationMap : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("TimeRotation90", 0,5);
+        InvokeRepeating("TimeRotation90", 30,30);
     }
 
     void Update()

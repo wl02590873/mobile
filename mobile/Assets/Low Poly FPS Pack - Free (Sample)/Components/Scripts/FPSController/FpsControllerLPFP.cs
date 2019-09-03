@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using Photon.Realtime;
 
 namespace FPSControllerLPFP
 {
@@ -161,12 +160,18 @@ namespace FPSControllerLPFP
             
             if (collision.gameObject.tag == "子彈")
             {
-                playerHp -= 10;
+                GetComponent<Collider>().enabled = false;
+                playerHp -= UnityEngine.Random.Range(5, 25);
                 textHP.text = "" + playerHp;
                 if (playerHp <= 0)
                 {
                     life -= 1;
                     Dead();
+                }
+                if (playerHp<=0&&life<=0)
+                {
+                    PhotonNetwork.LeaveRoom();//離開房間
+                    Cursor.lockState = CursorLockMode.None;
                 }
             }
         }
@@ -237,7 +242,6 @@ namespace FPSControllerLPFP
             arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
-            ExcGame();
         }
 
         #region 原本視角控制跳躍
@@ -253,17 +257,6 @@ namespace FPSControllerLPFP
                            Quaternion.AngleAxis(clampedY, Vector3.left);
             transform.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0f);
             arms.rotation = rotation;
-        }
-
-        /// <summary>
-        /// 離開遊戲
-        /// </summary>
-        private void ExcGame()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
         }
 
         /// Returns the target rotation of the camera around the y axis with no smoothing.
