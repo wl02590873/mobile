@@ -17,6 +17,6 @@ public class RotationMap : MonoBehaviour
 
     public void TimeRotation90()
     {
-        gameObject.transform.Rotate (0, 0, 0);
+        gameObject.transform.Rotate (90, 0, 0);
     }
 }

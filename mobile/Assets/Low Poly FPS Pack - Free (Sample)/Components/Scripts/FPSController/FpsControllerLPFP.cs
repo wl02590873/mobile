@@ -14,11 +14,6 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(AudioSource))]
     public class FpsControllerLPFP : MonoBehaviourPun, IPunObservable
     {
-        //
-        public delegate void PlayerDEAD();
-        //死亡事件
-        public event PlayerDEAD Life0;
-        public event PlayerDEAD Dead;
         #region 血量
         [Header("玩家血量")]
         public float playerHp;
@@ -29,7 +24,8 @@ namespace FPSControllerLPFP
         private float playerMaxHp = 100;//最大HP
         [Header("玩家血量文字")]
         public Text textHP;
-
+        [Header("玩家生命文字")]
+        public Text textLife;
         #endregion
 
         #region 玩家控制開關
@@ -132,8 +128,11 @@ namespace FPSControllerLPFP
             _rotationY = new SmoothRotation(RotationYRaw);
             _velocityX = new SmoothVelocity();
             _velocityZ = new SmoothVelocity();
+            //鎖定滑鼠
             Cursor.lockState = CursorLockMode.Locked;
             ValidateRotationRestriction();
+            //顯示目前生命
+            textLife.text = "剩餘生命" + "\n" + life;
         }
 
         private Transform AssignCharactersCamera()
@@ -398,12 +397,14 @@ namespace FPSControllerLPFP
         /// <summary>
         /// 死亡方法
         /// </summary>
-        private void Dead0()
+        private void Dead()
         {
             if (playerHp<=0)
             {
-            Dead();
                 life -= 1;
+                gameObject.transform.position = Vector3.zero;
+                textLife.text = "剩餘生命" + "\n" + life;
+                playerHp += 100;
             }
         }
 

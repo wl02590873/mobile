@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Dead.Dead += PlayerSpawn;
         Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外
         SpawnPlayer();
         InvokeRepeating("GameTime", 0, 1);
@@ -40,10 +39,4 @@ public class GameManager : MonoBehaviour
         TimeUI.text = "時間:" + gameTime++;
     }
 
-    private void PlayerSpawn ()
-    {
-        //隨機=隨機(0,陣列長度);
-        int r = Random.Range(0, spawnPlayer.Length);
-        new Vector3(transform.position.x, transform.position.y, transform.position.z);
-    }
 }
