@@ -7,6 +7,7 @@ public class MenuUI : MonoBehaviour
 {
     [Header("ESC選單UI")]
     public GameObject ESCUI;
+    public GameObject PlayerDeadUI;
 
     private void Update()
     {
@@ -36,6 +37,13 @@ public class MenuUI : MonoBehaviour
             PhotonNetwork.LeaveRoom();//離開房間
             PhotonNetwork.LoadLevel("遊戲大廳");//返回大廳
 
+        }
+        if (UIint == 3)
+        {
+            PlayerDeadUI.SetActive(false);
+            PhotonNetwork.LoadLevel("遊戲大廳");//回到大廳
+            PhotonNetwork.LeaveRoom();//離開房間
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

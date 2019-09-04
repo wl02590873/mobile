@@ -13,12 +13,17 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(AudioSource))]
     public class FpsControllerLPFP : MonoBehaviourPun, IPunObservable
     {
-        #region 血量
+        #region 玩家設定
+        [Header("玩家名稱")]
+        public Text textName;
         [Header("玩家血量")]
         public float playerHp;
 
         [Header("生命數量")]
-        public int life;
+        public float life;
+        float lifePC;
+        [Header("死亡UI")]
+        public GameObject PlayerDeadUI;
 
         private float playerMaxHp = 100;//最大HP
         [Header("玩家血量文字")]
@@ -34,7 +39,6 @@ namespace FPSControllerLPFP
         public GameObject playerUI;
 
         [Header("攝影機")]
-        public GameObject obj;
         public GameObject cam;
         #endregion
         #region 同步座標資訊
@@ -108,13 +112,14 @@ namespace FPSControllerLPFP
         /// Initializes the FpsController on start.
         private void Start()
         {
+            lifePC = life;
             //如果不是自己的物件
             if (!pv.IsMine)
             {
-                GetComponent<PlayerAnimator>().enabled = false;
                 playerUI.SetActive(false);//玩家UI
-                obj.SetActive(false);//玩家攝影機
                 cam.SetActive(false);//玩家攝影機
+                GetComponent<PlayerAnimator>().enabled = false;
+                textName.text = pv.Owner.NickName;//玩家名稱.文字=元件擁有者.暱稱
             }
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -157,10 +162,9 @@ namespace FPSControllerLPFP
         #region 玩家扣血
         public void OnCollisionEnter(Collision collision)
         {
-            
             if (collision.gameObject.tag == "子彈")
             {
-                GetComponent<Collider>().enabled = false;
+                
                 playerHp -= UnityEngine.Random.Range(5, 25);
                 textHP.text = "" + playerHp;
                 if (playerHp <= 0)
@@ -168,10 +172,9 @@ namespace FPSControllerLPFP
                     life -= 1;
                     Dead();
                 }
-                if (playerHp<=0&&life<=0)
+                else if (lifePC < 0)
                 {
-                    PhotonNetwork.LeaveRoom();//離開房間
-                    Cursor.lockState = CursorLockMode.None;
+                    Dead0();
                 }
             }
         }
@@ -209,7 +212,9 @@ namespace FPSControllerLPFP
             //如果是自己物件執行控制玩家
             if (pv.IsMine)
             {
+                textName.text = PhotonNetwork.NickName;
                 RotateCameraAndCharacter();
+                PlayFootstepSounds();
                 MoveCharacter();
                 Jump();
             }
@@ -392,13 +397,18 @@ namespace FPSControllerLPFP
         /// </summary>
         private void Dead()
         {
-            if (playerHp<=0)
+            if (playerHp <= 0)
             {
-                life -= 1;
-                gameObject.transform.position = Vector3.zero;
+                life -= 1.0f;
                 textLife.text = "剩餘生命" + "\n" + life;
                 playerHp += 100;
             }
+        }
+        private void Dead0()
+        {
+            PlayerDeadUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+
         }
 
         /// A helper for assistance with smoothing the camera rotation.

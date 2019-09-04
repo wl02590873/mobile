@@ -15,6 +15,8 @@ public class HallUI : MonoBehaviourPunCallbacks
     public GameObject JoinUI;
     [Header("玩家名稱輸入UI")]
     public GameObject PlayerNameUI;
+    [Header("死後UI")]
+    public GameObject PlayerDeadUI;
 
     private void Start()
     {

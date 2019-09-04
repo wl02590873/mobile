@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
 
     private float gameTime;
 
-    public FPSControllerLPFP.FpsControllerLPFP Dead;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;    //讓滑鼠在螢幕內不會跑到視窗外

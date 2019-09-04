@@ -856,6 +856,7 @@ MonoBehaviour:
   NewRoom: {fileID: 758969436}
   JoinUI: {fileID: 1553712326}
   PlayerNameUI: {fileID: 76540906}
+  PlayerDeadUI: {fileID: 0}
 --- !u!114 &599849072
 MonoBehaviour:
   m_ObjectHideFlags: 0
