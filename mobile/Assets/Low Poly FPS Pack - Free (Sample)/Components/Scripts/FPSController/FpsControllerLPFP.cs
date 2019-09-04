@@ -121,6 +121,7 @@ namespace FPSControllerLPFP
                 GetComponent<PlayerAnimator>().enabled = false;
                 textName.text = pv.Owner.NickName;//玩家名稱.文字=元件擁有者.暱稱
             }
+            textName.text = PhotonNetwork.NickName;
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
@@ -164,13 +165,13 @@ namespace FPSControllerLPFP
         {
             if (collision.gameObject.tag == "子彈")
             {
-                
-                playerHp -= UnityEngine.Random.Range(5, 25);
+
+                playerHp -= UnityEngine.Random.Range(5, 20);
                 textHP.text = "" + playerHp;
                 if (playerHp <= 0)
                 {
                     life -= 1;
-                    Dead();
+                    Dead0();
                 }
                 else if (lifePC < 0)
                 {
@@ -212,7 +213,6 @@ namespace FPSControllerLPFP
             //如果是自己物件執行控制玩家
             if (pv.IsMine)
             {
-                textName.text = PhotonNetwork.NickName;
                 RotateCameraAndCharacter();
                 PlayFootstepSounds();
                 MoveCharacter();
