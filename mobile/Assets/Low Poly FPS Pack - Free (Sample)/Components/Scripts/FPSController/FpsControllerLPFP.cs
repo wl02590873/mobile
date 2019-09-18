@@ -165,15 +165,9 @@ namespace FPSControllerLPFP
         {
             if (collision.gameObject.tag == "子彈")
             {
-
-                playerHp -= UnityEngine.Random.Range(5, 20);
+                playerHp -= UnityEngine.Random.Range(1, 20);
                 textHP.text = "" + playerHp;
                 if (playerHp <= 0)
-                {
-                    life -= 1;
-                    Dead0();
-                }
-                else if (lifePC < 0)
                 {
                     Dead0();
                 }
