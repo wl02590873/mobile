@@ -1133,7 +1133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6735752138181205665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3945,7 +3945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textName: {fileID: 6544179843542769732}
   playerHp: 100
-  life: 3
   PlayerDeadUI: {fileID: 4294834918577333704}
   textHP: {fileID: 1926489642440046907}
   textLife: {fileID: 1190198136477225217}

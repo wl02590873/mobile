@@ -19,9 +19,6 @@ namespace FPSControllerLPFP
         [Header("玩家血量")]
         public float playerHp;
 
-        [Header("生命數量")]
-        public float life;
-        float lifePC;
         [Header("死亡UI")]
         public GameObject PlayerDeadUI;
 
@@ -112,7 +109,6 @@ namespace FPSControllerLPFP
         /// Initializes the FpsController on start.
         private void Start()
         {
-            lifePC = life;
             //如果不是自己的物件
             if (!pv.IsMine)
             {
@@ -136,8 +132,6 @@ namespace FPSControllerLPFP
             //鎖定滑鼠
             Cursor.lockState = CursorLockMode.Locked;
             ValidateRotationRestriction();
-            //顯示目前生命
-            textLife.text = "剩餘生命" + "\n" + life;
         }
 
         private Transform AssignCharactersCamera()
@@ -393,8 +387,6 @@ namespace FPSControllerLPFP
         {
             if (playerHp <= 0)
             {
-                life -= 1.0f;
-                textLife.text = "剩餘生命" + "\n" + life;
                 playerHp += 100;
             }
         }
